@@ -1,0 +1,8 @@
+#!/bin/sh
+motelist -c | while read line
+do
+   code=`echo $line | cut -d "," -f 1`
+	dev=`echo $line | cut -d "," -f 2`
+   echo "Debugging mode. PrintfClient opened on port $dev"
+	java net.tinyos.tools.PrintfClient -comm serial@$dev:telosbs
+done
